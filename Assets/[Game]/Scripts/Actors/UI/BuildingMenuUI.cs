@@ -17,12 +17,17 @@ public class BuildingMenuUI : MonoBehaviour
     [Inject] private InGameDataService _inGameDataService;
     [Inject] private GameSettings _gameSettings;
 
-    bool isActive;
-
     [Inject]
     private void Construct()
     {
         Events.BuildingEvents.onBuildingPlaceSelected += Show;
+        Events.BuildingEvents.onBuildingSpawned += OnBuildingSpawned;
+    }
+
+    private void OnDestroy()
+    {
+        Events.BuildingEvents.onBuildingPlaceSelected -= Show;
+        Events.BuildingEvents.onBuildingSpawned -= OnBuildingSpawned;
     }
 
     private void Start()
@@ -32,9 +37,9 @@ public class BuildingMenuUI : MonoBehaviour
 
     private void Initialize()
     {
-        var buildings = _inGameDataService.GetAllBuildingData();
+        var buildingsData = _inGameDataService.GetAllBuildingData();
 
-        foreach (var buildingData in buildings)
+        foreach (var buildingData in buildingsData)
         {
             Instantiate(_optionPrefab, _optionsContainer)
                 .Setup(buildingData);
@@ -43,9 +48,11 @@ public class BuildingMenuUI : MonoBehaviour
 
     private void Show(BuildingPlace place)
     {
-        transform.position = Camera.main.WorldToScreenPoint(place.transform.position) + _gameSettings.BuildingMenuOffset;
+        transform.position = CalculateBuildingMenuPosition(place);
 
         gameObject.SetActive(true);
+
+        Events.UI.onBuildingMenuActivenessChanged?.Invoke(true);
 
         //isGonnaOpen = true;
         //StartCoroutine(Extensions.ExecuteOnEndOfFrame(() => );
@@ -54,8 +61,16 @@ public class BuildingMenuUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-        isActive = false;
+
+        Events.UI.onBuildingMenuActivenessChanged?.Invoke(false);
     }
+
+    private void OnBuildingSpawned(Building arg0) => Hide();
+
+    private Vector3 CalculateBuildingMenuPosition(BuildingPlace place) => 
+        Camera.main.WorldToScreenPoint(place.transform.position) + _gameSettings.BuildingMenuOffset;
+
+
 
     private void Update()
     {

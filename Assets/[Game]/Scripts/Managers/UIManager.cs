@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-public class UIManagers : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     [SerializeField] private BuildingMenuUI _buildingMenu;
 
