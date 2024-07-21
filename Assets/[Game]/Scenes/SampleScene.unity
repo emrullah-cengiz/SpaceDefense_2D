@@ -1306,6 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameSettings: {fileID: 11400000, guid: 8fc45faf5d0d09c45916a13ffeee310b, type: 2}
+  _buildingsParent: {fileID: 1212863448}
 --- !u!4 &1807138418
 Transform:
   m_ObjectHideFlags: 0

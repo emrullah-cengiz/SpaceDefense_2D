@@ -5,7 +5,8 @@ using UnityEngine;
 [Serializable]
 public class SlowEffectDefinition : EffectDefinition
 {
-    public float SpeedReduction;
+    public float SpeedReductionRatio;
+    public float EffectDuration;
     public float FireRate;
     public float FireSpeed;
 

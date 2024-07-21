@@ -12,14 +12,14 @@ public class BuildingManager : MonoBehaviour
     {
         Events.BuildingEvents.onBuildingPlaceSelected += SetSelectedBuildingPlace;
         Events.BuildingEvents.onBuildingSpawned += SetSelectedBuilding;
-        Events.UI.onBuildingMenuActivenessChanged += ClearSelectedBuildingPlaceIfMenuInactive;
+        //Events.UI.onBuildingMenuDisabled += ClearSelectedBuilding;
     }
 
     private void OnDisable()
     {
         Events.BuildingEvents.onBuildingPlaceSelected -= SetSelectedBuildingPlace;
         Events.BuildingEvents.onBuildingSpawned -= SetSelectedBuilding;
-        Events.UI.onBuildingMenuActivenessChanged -= ClearSelectedBuildingPlaceIfMenuInactive;
+        //Events.UI.onBuildingMenuEnabled -= ClearSelectedBuilding;
     }
 
     private void SetSelectedBuildingPlace(BuildingPlace place) => 
@@ -29,13 +29,9 @@ public class BuildingManager : MonoBehaviour
     {
         SelectedBuilding = building;
 
-        //SelectedBuildingPlace.Enable(false);
-        SelectedBuildingPlace = null;
+        SelectedBuildingPlace.Enable(false);
+        //SelectedBuildingPlace = null;
     }
 
-    private void ClearSelectedBuildingPlaceIfMenuInactive(bool s)
-    {
-        if (!s)
-            SelectedBuildingPlace = null;
-    }
+    //private void ClearSelectedBuilding() => SelectedBuildingPlace = null;
 }

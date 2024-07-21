@@ -52,7 +52,7 @@ public class BuildingMenuUI : MonoBehaviour
 
         gameObject.SetActive(true);
 
-        Events.UI.onBuildingMenuActivenessChanged?.Invoke(true);
+        Events.UI.onBuildingMenuEnabled?.Invoke();
 
         //isGonnaOpen = true;
         //StartCoroutine(Extensions.ExecuteOnEndOfFrame(() => );
@@ -62,7 +62,7 @@ public class BuildingMenuUI : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        Events.UI.onBuildingMenuActivenessChanged?.Invoke(false);
+        Events.UI.onBuildingMenuDisabled?.Invoke();
     }
 
     private void OnBuildingSpawned(Building arg0) => Hide();
@@ -71,7 +71,7 @@ public class BuildingMenuUI : MonoBehaviour
         Camera.main.WorldToScreenPoint(place.transform.position) + _gameSettings.BuildingMenuOffset;
 
 
-
+    ///TODO: Refactor it, if possible remove Update
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

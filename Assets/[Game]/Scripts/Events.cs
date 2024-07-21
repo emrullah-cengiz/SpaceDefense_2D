@@ -13,7 +13,8 @@ public static class Events
 
     public static class UI
     {
-        public static UnityAction<bool> onBuildingMenuActivenessChanged = delegate { };
+        public static UnityAction onBuildingMenuEnabled = delegate { };
+        public static UnityAction onBuildingMenuDisabled = delegate { };
 
     }
 }

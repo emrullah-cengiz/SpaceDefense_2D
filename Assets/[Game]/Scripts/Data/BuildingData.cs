@@ -6,7 +6,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(menuName = "Building", fileName = "BuildingData")]
-public class BuildingData : ScriptableObject
+public class BuildingData : SerializedScriptableObject
 {
     [PreviewField]
     public Sprite Sprite;
