@@ -29,7 +29,7 @@ public class BuildingManager : MonoBehaviour
     {
         SelectedBuilding = building;
 
-        SelectedBuildingPlace.Enable(false);
+        //SelectedBuildingPlace.Enable(false);
         SelectedBuildingPlace = null;
     }
 

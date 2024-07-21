@@ -3,21 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
+using static Building;
 
-public class Building : MonoBehaviour
+public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
 {
     public BuildingData Data { get; private set; }
 
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private List<Vector3> _barrelPoints;
 
-    public void OnSpawned(BuildingData data, Vector3 pos)
+    public void OnSpawned(PoolGroupParams attrs)
     {
-        Data = data;
-        
+        Data = attrs.Data;
+
         _sprite.sprite = Data.Sprite;
-        
-        transform.position = pos;
+
+        transform.position = attrs.Position;
+    }
+
+    public void OnDespawned()
+    {
+
     }
 
     private void OnDrawGizmos()
@@ -33,11 +39,18 @@ public class Building : MonoBehaviour
         }
     }
 
-    public class Pool : MonoMemoryPool<BuildingData, Vector3, Building>
+
+    public class Pool : MonoPoolableMemoryPool<PoolGroupParams, Building>, IMemoryPool
     {
-        protected override void Reinitialize(BuildingData data, Vector3 pos, Building item)
-        {
-            item.OnSpawned(data, pos);
-        }
+    }
+
+    public class PoolGroup : MemoryPoolGroup<PoolGroupParams, Building, BuildingType, Building.Pool>, IMemoryPoolGroup
+    {
+    }
+
+    public struct PoolGroupParams : IMemoryPoolGroupParams
+    {
+        public BuildingData Data { get; set; }
+        public Vector3 Position { get; set; }
     }
 }

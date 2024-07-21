@@ -1,9 +1,12 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
 public class GameInstaller : MonoInstaller
 {
     [SerializeField] private GameSettings _gameSettings;
+    [SerializeField] private Transform _buildingsParent;
 
     public override void InstallBindings()
     {
@@ -20,20 +23,11 @@ public class GameInstaller : MonoInstaller
                  .FromComponentInHierarchy()
                  .AsSingle();
 
-        
-        Container.BindMemoryPool<Building, Building.Pool>()
-                 .WithInitialSize(5)
-                 .ExpandByOneAtATime()
-                 .FromComponentInNewPrefabResource($"Prefabs/{nameof(Building)}")
-                 .UnderTransformGroup($"{nameof(Building)}s");
 
-        //Factory like Pool binding
-        //Container.BindFactory<BuildingData, Vector3, Building, Building.Pool>()
-        //         .FromMonoPoolableMemoryPool(x => x
-        //             .WithInitialSize(5)
-        //             .ExpandByOneAtATime()
-        //             .FromComponentInNewPrefabResource($"Prefabs/{nameof(Building)}")
-        //             .UnderTransformGroup($"{nameof(Building)}s"));
-
+        Container.BindPoolGroup<Building, Building.Pool, Building.PoolGroup>("Prefabs/Buildings", _buildingsParent,
+                                                                            poolConfig => poolConfig.WithInitialSize(4)
+                                                                                                    .ExpandByOneAtATime());
     }
+
+
 }

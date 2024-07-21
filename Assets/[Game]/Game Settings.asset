@@ -12,4 +12,91 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d230cc623edb24345a86727cd8558489, type: 3}
   m_Name: Game Settings
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 1641370875624069834, guid: c5281f05ec6f8104988b01ea00c56888, type: 3}
+    - {fileID: 1641370875624069834, guid: 65cdf6d2f900f274397f76226d2c9907, type: 3}
+    - {fileID: 1641370875624069834, guid: c1b29b1b625212b48a133e06563d3a2e, type: 3}
+    - {fileID: 1641370875624069834, guid: 4a9fcc0557021984981019d1399b03ef, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _buildingPrefabs
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[BuildingType, Assembly-CSharp],[Building,
+        Assembly-CSharp]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[BuildingType, Assembly-CSharp]],
+        mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 4
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 10
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 10
+      Data: 2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 10
+      Data: 3
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   BuildingMenuOffset: {x: 0, y: 84, z: 0}

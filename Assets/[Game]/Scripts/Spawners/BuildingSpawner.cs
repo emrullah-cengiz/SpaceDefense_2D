@@ -5,13 +5,14 @@ using Zenject;
 
 public class BuildingSpawner : MonoBehaviour
 {
-    private Building.Pool _pool;
+    private Building.PoolGroup _poolGroup;
+
     private BuildingManager _buildingManager;
 
     [Inject]
-    void Construct(Building.Pool pool, BuildingManager buildingManager)
+    void Construct(Building.PoolGroup poolGroup, BuildingManager buildingManager)
     {
-        _pool = pool;
+        _poolGroup = poolGroup;
         _buildingManager = buildingManager;
     }
 
@@ -27,7 +28,11 @@ public class BuildingSpawner : MonoBehaviour
 
     private void Build(BuildingData data)
     {
-        var building = _pool.Spawn(data, _buildingManager.SelectedBuildingPlace.transform.position);
+        var building = _poolGroup.Spawn(data.Type, new Building.PoolGroupParams()
+        {
+            Data = data,
+            Position = _buildingManager.SelectedBuildingPlace.transform.position
+        });
 
         Events.BuildingEvents.onBuildingSpawned?.Invoke(building);
     }
