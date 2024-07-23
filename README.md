@@ -5,7 +5,8 @@ This Unity game project is a showcase portfolio focused on code architecture, fe
 
 ## Technologies and Patterns Used
 - Zenject
-..
+- MVC/MVP Patterns
+- ..
 
 ## Note
 This README will be updated as the project progresses.
