@@ -23,6 +23,10 @@ public class GameInstaller : MonoInstaller
                  .FromComponentInHierarchy()
                  .AsSingle();
 
+        //Container.Bind<EffectFactory>().AsSingle();
+
+        Container.BindFactory<IEffectDefinition, IEffect, EffectFactory>().FromFactory<CustomEffectFactory>();
+
 
         Container.BindPoolGroup<Building, Building.Pool, Building.PoolGroup>("Prefabs/Buildings", _buildingsParent,
                                                                             poolConfig => poolConfig.WithInitialSize(4)

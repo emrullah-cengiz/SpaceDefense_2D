@@ -52,6 +52,24 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: EffectDefinition
+      Entry: 7
+      Data: 2|AreaDamageEffectDefinition, Assembly-CSharp
+    - Name: Damage
+      Entry: 3
+      Data: 15
+    - Name: FireRate
+      Entry: 4
+      Data: 1
+    - Name: FireSpeed
+      Entry: 4
+      Data: 3
+    - Name: EffectRadius
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
   Sprite: {fileID: 867383365, guid: ce1c66d08bc513d4d8b6002bca4001b8, type: 3}
   Name: Rocket
   Type: 1

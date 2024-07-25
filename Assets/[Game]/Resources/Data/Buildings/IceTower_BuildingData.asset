@@ -52,6 +52,24 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: EffectDefinition
+      Entry: 7
+      Data: 2|SlowEffectDefinition, Assembly-CSharp
+    - Name: SpeedReductionRatio
+      Entry: 4
+      Data: 25
+    - Name: EffectDuration
+      Entry: 4
+      Data: 3
+    - Name: FireRate
+      Entry: 4
+      Data: 2
+    - Name: FireSpeed
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
   Sprite: {fileID: -467203353, guid: ce1c66d08bc513d4d8b6002bca4001b8, type: 3}
   Name: Ice
   Type: 3

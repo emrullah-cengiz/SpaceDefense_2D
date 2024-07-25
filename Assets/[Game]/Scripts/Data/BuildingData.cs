@@ -17,5 +17,7 @@ public class BuildingData : SerializedScriptableObject
 
     public int Price;
 
-    public List<EffectDefinition> EffectDefinitions;
+    //public List<EffectDefinition> EffectDefinitions;
+
+    public EffectDefinition EffectDefinition;
 }

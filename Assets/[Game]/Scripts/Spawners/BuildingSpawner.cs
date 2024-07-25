@@ -28,7 +28,7 @@ public class BuildingSpawner : MonoBehaviour
 
     private void Build(BuildingData data)
     {
-        var building = _poolGroup.Spawn(data.Type, new Building.PoolGroupParams()
+        var building = _poolGroup.Spawn(data.Type, new Building.PoolGroup.PoolGroupParams()
         {
             Data = data,
             Position = _buildingManager.SelectedBuildingPlace.transform.position

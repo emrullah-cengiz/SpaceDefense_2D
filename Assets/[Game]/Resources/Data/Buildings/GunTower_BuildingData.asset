@@ -49,6 +49,21 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
+    - Name: EffectDefinition
+      Entry: 7
+      Data: 2|DamageEffectDefinition, Assembly-CSharp
+    - Name: Damage
+      Entry: 3
+      Data: 5
+    - Name: FireRate
+      Entry: 4
+      Data: 4
+    - Name: FireSpeed
+      Entry: 4
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
   Sprite: {fileID: -739463360, guid: ce1c66d08bc513d4d8b6002bca4001b8, type: 3}
   Name: Gun
   Type: 0
