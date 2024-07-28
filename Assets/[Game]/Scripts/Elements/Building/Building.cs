@@ -12,7 +12,12 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
     [SerializeField] private SpriteRenderer _sprite;
     [SerializeField] private List<Vector3> _barrelPoints;
 
-    [Inject] EffectFactory _effectFactory;
+    [SerializeField] private EffectHandler _effectHandler;
+
+    private void OnCreated()
+    {
+
+    }
 
     public void OnSpawned(PoolGroupParams attrs)
     {
@@ -22,11 +27,7 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
 
         transform.position = attrs.Position;
 
-        //
-
-        var effect = _effectFactory.Create(Data.EffectDefinition);
-
-        effect.Initialize();
+        _effectHandler.Setup(Data.EffectDefinition);
     }
 
     public void OnDespawned()
@@ -50,15 +51,16 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
 
     public class Pool : MonoPoolableMemoryPool<PoolGroupParams, Building>, IMemoryPool
     {
-        protected override void OnCreated(Building item)
+        protected override void OnCreated(Building building)
         {
-            base.OnCreated(item);
+            base.OnCreated(building);
 
-
+            building.OnCreated();
         }
     }
 
-    public class PoolGroup : MemoryPoolGroup<PoolGroupParams, Building, BuildingType, Building.Pool>, IMemoryPoolGroup
+
+    public class PoolGroup : MemoryPoolGroup<PoolGroupParams, Building, BuildingType, Pool>, IMemoryPoolGroup
     {
         public struct PoolGroupParams : IMemoryPoolGroupParams
         {

@@ -1,6 +1,8 @@
 ﻿public abstract class EffectBase : IEffect
 {
-    public IEffectDefinition Data { get; set; }
+    protected IEffectDefinition Data { get; set; }
+
+    //protected bool IsActive { get; set; }
 
     protected EffectBase(IEffectDefinition effectDefinition)
     {
@@ -11,6 +13,15 @@
     {
     }
 
-    public abstract void Execute();
 
+    public void Activate(bool s)
+    {
+        if (s)
+            OnEnable();
+        else
+            OnDisable();
+    }
+
+    protected abstract void OnEnable();
+    protected abstract void OnDisable();
 }

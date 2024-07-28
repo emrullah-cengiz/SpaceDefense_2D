@@ -4,8 +4,13 @@
     {
     }
 
-    public override void Execute()
+    protected override void OnDisable()
     {
+        throw new System.NotImplementedException();
+    }
 
+    protected override void OnEnable()
+    {
+        throw new System.NotImplementedException();
     }
 }
