@@ -15,52 +15,31 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 943830454165811, guid: c0762f323de891c4bb45acec499b7167, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: EffectDefinitions
-      Entry: 7
-      Data: 0|System.Collections.Generic.List`1[[EffectDefinition, Assembly-CSharp]],
-        mscorlib
-    - Name: 
-      Entry: 12
-      Data: 1
-    - Name: 
-      Entry: 7
-      Data: 1|DamageEffectDefinition, Assembly-CSharp
-    - Name: Damage
-      Entry: 3
-      Data: 5
-    - Name: FireRate
-      Entry: 4
-      Data: 4
-    - Name: FireSpeed
-      Entry: 4
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
     - Name: EffectDefinition
       Entry: 7
-      Data: 2|DamageEffectDefinition, Assembly-CSharp
+      Data: 0|DamageEffectDefinition, Assembly-CSharp
+    - Name: _bulletPrefab
+      Entry: 10
+      Data: 0
+    - Name: BarrelNumber
+      Entry: 3
+      Data: 1
     - Name: Damage
       Entry: 3
       Data: 5
     - Name: FireRate
       Entry: 4
-      Data: 4
+      Data: 2
     - Name: FireSpeed
       Entry: 4
-      Data: 10
+      Data: 5
     - Name: 
       Entry: 8
       Data: 

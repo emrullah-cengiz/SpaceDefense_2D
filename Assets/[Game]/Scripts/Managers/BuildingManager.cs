@@ -13,6 +13,17 @@ public class BuildingManager : MonoBehaviour
         Events.BuildingEvents.onBuildingPlaceSelected += SetSelectedBuildingPlace;
         Events.BuildingEvents.onBuildingSpawned += SetSelectedBuilding;
         //Events.UI.onBuildingMenuDisabled += ClearSelectedBuilding;
+
+
+        int teamNumber = 589, gameNumber = 0;
+
+        while (teamNumber > 0)
+        {
+            gameNumber += teamNumber / 2;
+            teamNumber /= 2;
+        }
+
+        Debug.Log("<color='red'>" + gameNumber + "</color>");
     }
 
     private void OnDisable()
@@ -22,7 +33,7 @@ public class BuildingManager : MonoBehaviour
         //Events.UI.onBuildingMenuEnabled -= ClearSelectedBuilding;
     }
 
-    private void SetSelectedBuildingPlace(BuildingPlace place) => 
+    private void SetSelectedBuildingPlace(BuildingPlace place) =>
         SelectedBuildingPlace = place;
 
     private void SetSelectedBuilding(Building building)

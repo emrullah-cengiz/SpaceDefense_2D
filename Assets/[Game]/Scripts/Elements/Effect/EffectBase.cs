@@ -2,11 +2,12 @@
 {
     protected IEffectDefinition Data { get; set; }
 
-    //protected bool IsActive { get; set; }
+    protected readonly EffectHandler _effectHandler;
 
-    protected EffectBase(IEffectDefinition effectDefinition)
+    protected EffectBase(IEffectDefinition effectDefinition, EffectHandler effectHandler)
     {
         Data = effectDefinition;
+        _effectHandler = effectHandler;
     }
 
     public virtual void Initialize()

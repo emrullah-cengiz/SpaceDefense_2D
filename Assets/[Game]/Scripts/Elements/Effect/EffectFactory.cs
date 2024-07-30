@@ -3,17 +3,17 @@ using System;
 using Zenject;
 using System.Collections.Generic;
 
-public class EffectFactory : PlaceholderFactory<IEffectDefinition, IEffect>
+public class EffectFactory : PlaceholderFactory<IEffectDefinition, EffectHandler, IEffect>
 {
 
 }
 
 
-public class CustomEffectFactory : IFactory<IEffectDefinition, IEffect>, IValidatable
+public class CustomEffectFactory : IFactory<IEffectDefinition, EffectHandler, IEffect>, IValidatable
 {
     private readonly DiContainer _container;
 
-    private Dictionary<string, Func<IEffectDefinition, IEffect>> _effectCreators;
+    private Dictionary<string, Func<IEffectDefinition, EffectHandler, IEffect>> _effectCreators;
 
     public CustomEffectFactory(DiContainer container)
     {
@@ -27,11 +27,11 @@ public class CustomEffectFactory : IFactory<IEffectDefinition, IEffect>, IValida
         };
     }
 
-    public IEffect Create(IEffectDefinition effectDefinition)
+    public IEffect Create(IEffectDefinition effectDefinition, EffectHandler effectHandler)
     {
         if (_effectCreators.TryGetValue(effectDefinition.GetType().Name, out var creator))
         {
-            var effect = creator(effectDefinition);
+            var effect = creator(effectDefinition, effectHandler);
 
             return effect;
         }
@@ -42,13 +42,13 @@ public class CustomEffectFactory : IFactory<IEffectDefinition, IEffect>, IValida
     public void Validate()
     {
         foreach (var creator in _effectCreators.Values)
-            creator.Invoke(null);
+            creator.Invoke(null, null);
     }
 
-    public Func<IEffectDefinition, IEffect> GetCreator<TEffect>() where TEffect : IEffect
+    public Func<IEffectDefinition, EffectHandler, IEffect> GetCreator<TEffect>() where TEffect : IEffect
     {
-        return (IEffectDefinition effectDefinition) =>
-                _container.Instantiate<TEffect>(new object[] { effectDefinition });
+        return (IEffectDefinition effectDefinition, EffectHandler effectHandler) =>
+                _container.Instantiate<TEffect>(new object[] { effectDefinition, effectHandler });
     }
 
 }

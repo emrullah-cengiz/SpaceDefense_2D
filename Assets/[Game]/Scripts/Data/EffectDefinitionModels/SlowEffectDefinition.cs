@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class SlowEffectDefinition : EffectDefinition
+public class SlowEffectDefinition : EffectDefinitionBase
 {
     public float SpeedReductionRatio;
     public float EffectDuration;

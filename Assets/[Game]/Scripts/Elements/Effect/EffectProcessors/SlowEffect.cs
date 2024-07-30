@@ -1,6 +1,6 @@
 ﻿public class SlowEffect : EffectBase
 {
-    public SlowEffect(SlowEffectDefinition effectDefinition) : base(effectDefinition)
+    public SlowEffect(SlowEffectDefinition effectDefinition, EffectHandler effectHandler) : base(effectDefinition, effectHandler)
     {
     }
 

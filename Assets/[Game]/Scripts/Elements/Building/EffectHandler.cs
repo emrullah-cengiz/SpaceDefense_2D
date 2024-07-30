@@ -6,21 +6,23 @@ using Zenject;
 
 public class EffectHandler : MonoBehaviour
 {
+    public List<Vector3> BarrelPoints;
+
     [Inject] private EffectFactory _effectFactory;
 
     private List<Enemy> _targetableEnemies;
     private IEffect _effect;
 
-    public void Setup(EffectDefinition definition)
+    public void Setup(EffectDefinitionBase definition)
     {
         _targetableEnemies = new();
 
-        _effect = _effectFactory.Create(definition);
+        _effect = _effectFactory.Create(definition, this);
 
         _effect.Initialize();
     }
 
-    public IEnumerable<Enemy> GetCurrentTargets(int n) => _targetableEnemies.Take(n);
+    public List<Enemy> GetCurrentTargets(int n) => _targetableEnemies.Take(n).ToList();
 
     private void OnTriggerEnter2D(Collider2D collision) => HandleTrigger(collision, true);
     private void OnTriggerExit2D(Collider2D collision) => HandleTrigger(collision, false);
@@ -40,4 +42,16 @@ public class EffectHandler : MonoBehaviour
         if (changeActiveState)
             _effect.Activate(isEntering);
     }
+
+    private void OnDrawGizmos()
+    {
+        if (!(BarrelPoints?.Count > 0))
+            return;
+
+        Gizmos.color = Color.cyan;
+
+        foreach (var pos in BarrelPoints)
+            Gizmos.DrawSphere(transform.position + pos, .1f);
+    }
+
 }

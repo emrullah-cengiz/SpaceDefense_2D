@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class DamageEffectDefinition : EffectDefinition
+public class DamageEffectDefinition : EffectDefinitionBase
 {
     public int Damage;
     public float FireRate;

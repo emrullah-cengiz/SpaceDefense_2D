@@ -16,6 +16,8 @@ public class GameInstaller : MonoInstaller
         //Services
         Container.Bind<InGameDataService>().AsSingle();
 
+
+
         ////Actors - Factories / Pools
 
         //Buildings
@@ -23,14 +25,19 @@ public class GameInstaller : MonoInstaller
                  .FromComponentInHierarchy()
                  .AsSingle();
 
-        //Container.Bind<EffectFactory>().AsSingle();
-
-        Container.BindFactory<IEffectDefinition, IEffect, EffectFactory>().FromFactory<CustomEffectFactory>();
+        Container.BindFactory<IEffectDefinition, EffectHandler, IEffect, EffectFactory>().FromFactory<CustomEffectFactory>();
 
 
-        Container.BindPoolGroup<Building, Building.Pool, Building.PoolGroup>("Prefabs/Buildings", _buildingsParent,
-                                                                            poolConfig => poolConfig.WithInitialSize(4)
-                                                                                                    .ExpandByOneAtATime());
+        Container.BindPoolGroup<Building, Building.Pool, Building.PoolGroup, BuildingType>("Prefabs/Buildings", _buildingsParent,
+                                                                                     poolConfig => poolConfig.WithInitialSize(4)
+                                                                                                             .ExpandByOneAtATime().NonLazy());
+
+        //Bullets
+
+        Container.BindPoolGroup<Bullet, Bullet.Pool, Bullet.PoolGroup, BulletType>("Prefabs/Bullets", poolsParent: null,
+                                                                              poolConfig => poolConfig.WithInitialSize(4)
+                                                                                                      .ExpandByDoubling().NonLazy());
+
     }
 
 

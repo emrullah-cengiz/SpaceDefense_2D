@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 
 [Serializable]
-public class DamageOverTimeEffectDefinition : EffectDefinition
+public class DamageOverTimeEffectDefinition : EffectDefinitionBase
 {
     public int DamagePerSecond;
     public int MaxTargetCount;

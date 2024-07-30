@@ -10,7 +10,6 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
     public BuildingData Data { get; private set; }
 
     [SerializeField] private SpriteRenderer _sprite;
-    [SerializeField] private List<Vector3> _barrelPoints;
 
     [SerializeField] private EffectHandler _effectHandler;
 
@@ -19,13 +18,13 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
 
     }
 
-    public void OnSpawned(PoolGroupParams attrs)
+    public void OnSpawned(PoolGroupParams args)
     {
-        Data = attrs.Data;
+        Data = args.Data;
 
         _sprite.sprite = Data.Sprite;
 
-        transform.position = attrs.Position;
+        transform.position = args.Position;
 
         _effectHandler.Setup(Data.EffectDefinition);
     }
@@ -34,20 +33,6 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
     {
 
     }
-
-    private void OnDrawGizmos()
-    {
-        if (!(_barrelPoints?.Count > 0))
-            return;
-
-        Gizmos.color = Color.cyan;
-
-        foreach (var pos in _barrelPoints)
-        {
-            Gizmos.DrawSphere(transform.position + pos, .1f);
-        }
-    }
-
 
     public class Pool : MonoPoolableMemoryPool<PoolGroupParams, Building>, IMemoryPool
     {
@@ -62,7 +47,7 @@ public class Building : MonoBehaviour, IPoolable<PoolGroupParams>
 
     public class PoolGroup : MemoryPoolGroup<PoolGroupParams, Building, BuildingType, Pool>, IMemoryPoolGroup
     {
-        public struct PoolGroupParams : IMemoryPoolGroupParams
+        public struct PoolGroupParams : IMemoryPoolParams
         {
             public BuildingData Data { get; set; }
             public Vector3 Position { get; set; }

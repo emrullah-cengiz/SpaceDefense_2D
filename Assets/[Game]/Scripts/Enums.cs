@@ -5,3 +5,10 @@
     ElectricTower,
     IceTower
 }
+
+public enum BulletType
+{
+    Default,
+    Rocket,
+    Ice
+}

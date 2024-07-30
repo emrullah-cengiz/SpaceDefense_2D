@@ -1,6 +1,6 @@
 ﻿public class DamageOverTimeEffect : EffectBase
 {
-    public DamageOverTimeEffect(DamageOverTimeEffectDefinition effectDefinition) : base(effectDefinition)
+    public DamageOverTimeEffect(DamageOverTimeEffectDefinition effectDefinition, EffectHandler effectHandler) : base(effectDefinition, effectHandler)
     {
     }
 

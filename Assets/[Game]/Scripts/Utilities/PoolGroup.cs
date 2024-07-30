@@ -4,14 +4,15 @@ using UnityEngine;
 using Zenject;
 
 public interface IMemoryPoolGroup { }
-public interface IMemoryPoolGroupParams { }
+public interface IMemoryPoolParams { }
 
 public abstract class MemoryPoolGroup<TGroupParamsModel, TContract, TGroupEnum, TPool> : MemoryPoolGroup<TGroupEnum, TPool>
-    where TGroupParamsModel : IMemoryPoolGroupParams
+    where TGroupParamsModel : IMemoryPoolParams
     where TGroupEnum : Enum
     where TPool : IMemoryPool<TGroupParamsModel, TContract>
 {
     public TContract Spawn(TGroupEnum type, TGroupParamsModel p1) => GetPool(type).Spawn(p1);
+    public void Despawn(TContract obj, TGroupEnum type) => GetPool(type).Despawn(obj);
 }
 
 public abstract class MemoryPoolGroup<TGroupEnum, TPool> where TGroupEnum : Enum

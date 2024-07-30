@@ -1,6 +1,6 @@
 ﻿public class AreaDamageEffect : EffectBase
 {
-    public AreaDamageEffect(AreaDamageEffectDefinition effectDefinition) : base(effectDefinition)
+    public AreaDamageEffect(AreaDamageEffectDefinition effectDefinition, EffectHandler effectHandler) : base(effectDefinition, effectHandler)
     {
     }
 

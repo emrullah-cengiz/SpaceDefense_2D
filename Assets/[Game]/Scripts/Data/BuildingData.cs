@@ -19,5 +19,5 @@ public class BuildingData : SerializedScriptableObject
 
     //public List<EffectDefinition> EffectDefinitions;
 
-    public EffectDefinition EffectDefinition;
+    public EffectDefinitionBase EffectDefinition;
 }
